@@ -23,9 +23,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 export PATH=$PATH:~/.local/bin
 
-# sourcing nvm
-. ~/.nvm/nvm.sh
-check_status $? "nvm"
 
 # tests node 
 test_node 4
@@ -37,10 +34,6 @@ test_node 14
 test_node 16
 test_node 18
 test_node 20
-
-# sourcing sdkman
-. ~/.sdkman/bin/sdkman-init.sh
-check_status $? "sdkman"
 
 # tests java
 test_java 8

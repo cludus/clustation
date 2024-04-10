@@ -21,13 +21,11 @@ function install_go {
         fi
     }
 
-    do_install_go 1.18
-    do_install_go 1.19
-    do_install_go 1.20
-    do_install_go 1.21
-    do_install_go 1.22
+    for ver in "${go_versions[@]}"; do
+        do_install_go $ver
+    done
 
-    goenv global 1.22
+    goenv global ${go_versions[0]}
 
     grep -q 'eval "$(goenv init -)"' ~/.bashrc
     if [[ $? != 0 ]];
@@ -43,10 +41,23 @@ function install_go {
 }
 
 function test_go {
-    go_version=$1
-    cd "go_tests/go_test$go_version" \
-        && go build > /dev/null 2>&1 \
-        && ./go_test_app > /dev/null 2>&1
-    check_status $? "go$go_version"
-    cd $rootdir
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    eval "$(goenv init -)"
+    export PATH="$GOROOT/bin:$PATH"
+    export PATH="$PATH:$GOPATH/bin"
+
+    function do_test_go {
+        dir="$rootdir/packages/sdks/go/tests"
+        go_version=$1
+        cd "$dir/go_test$go_version" \
+            && go build > /dev/null 2>&1 \
+            && ./go_test_app > /dev/null 2>&1
+        check_status $? "go$go_version"
+        cd $rootdir
+    }
+
+    for ver in "${go_versions[@]}"; do
+        do_test_go $ver
+    done
 }

@@ -26,6 +26,10 @@ function install_java {
 }
 
 function test_java {
+    # sourcing sdkman
+    . ~/.sdkman/bin/sdkman-init.sh
+    check_status $? "sdkman"
+
     function do_test_java {
         dir="$rootdir/packages/sdks/java/tests"
         java_version=$1

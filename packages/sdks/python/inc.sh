@@ -41,9 +41,21 @@ function install_python {
 }
 
 function test_python {
-    python_version=$1
-    cd "python_tests/python$python_version" \
-        && $(readlink $(pyenv which python)) . > /dev/null 2>&1
-    check_status $? "python$python_version"
-    cd $rootdir
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    export PATH=$PATH:~/.local/bin
+
+    function do_test_python {
+        dir="$rootdir/packages/sdks/python/tests"
+        python_version=$1
+        cd $dir/python$python_version \
+            && $(readlink $(pyenv which python)) . > /dev/null 2>&1
+        check_status $? "python$python_version"
+        cd $rootdir
+    }
+
+    for ver in "${python_versions[@]}"; do
+        do_test_python $ver
+    done
 }

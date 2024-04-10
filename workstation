@@ -11,10 +11,6 @@ do
     source $file
 done
 
-red='\033[0;31m'
-green='\033[0;32m'
-clear='\033[0m'
-
 function show_help {
     echo "usage: $0 {install|test}"
 }
@@ -23,13 +19,29 @@ function install_all {
     # install_basic_tools
     # test_basic_tools
 
-    install_java
-    test_java
+    # install_java
+    # test_java
+
+    # install_nodejs
+    # test_nodejs
+
+    # install_python
+    # test_python
+
+    # install_go
+    # test_go
+
+    install_dotnet
+    test_dotnet
 }
 
 function test_all {
     test_basic_tools
     test_java
+    test_nodejs
+    test_python
+    test_go
+    test_dotnet
 }
 
 case $1 in

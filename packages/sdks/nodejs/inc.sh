@@ -13,11 +13,22 @@ function install_nodejs {
 }
 
 function test_nodejs {
-    node_version=$1
-    nvm use $node_version > /dev/null 2>&1 \
-        && cd node_tests/node$node_version \
-        && npm i > /dev/null 2>&1 \
-        && npm run start > /dev/null 2>&1
-    check_status $? "node$node_version"
-    cd $rootdir
+    # sourcing nvm
+    . ~/.nvm/nvm.sh
+    check_status $? "nvm"
+
+    function do_test_nodejs {
+        dir="$rootdir/packages/sdks/nodejs/tests"
+        node_version=$1
+        nvm use $node_version > /dev/null 2>&1 \
+            && cd $dir/node$node_version \
+            && npm i > /dev/null 2>&1 \
+            && npm run start > /dev/null 2>&1
+        check_status $? "node$node_version"
+        cd $rootdir
+    }
+
+    for ver in "${node_versions[@]}"; do
+        do_test_nodejs $ver
+    done
 }
