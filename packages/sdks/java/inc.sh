@@ -7,7 +7,7 @@ function install_java {
     sudo sed -i 's|sdkman_auto_answer=false|sdkman_auto_answer=true|g' ~/.sdkman/etc/config
 
     for ver in "${java_versions[@]}"; do
-        sdk_version=${java_versions_map[$java_version]}
+        sdk_version=${java_versions_map[$ver]}
         sdk install java $sdk_version
     done
 
@@ -26,11 +26,18 @@ function install_java {
 }
 
 function test_java {
-    java_version=$1
-    sdk_version=${java_versions_map[$java_version]}
-    sdk use java $sdk_version > /dev/null 2>&1 \
-        && cd java_tests/mvn-jdk$java_version \
-        && mvn install > /dev/null 2>&1
-    check_status $? "java$java_version"
-    cd $rootdir
+    function do_test_java {
+        dir="$rootdir/packages/sdks/java/tests"
+        java_version=$1
+        sdk_version=${java_versions_map[$java_version]}
+        sdk use java $sdk_version > /dev/null 2>&1 \
+            && cd $dir/mvn-jdk$java_version \
+            && mvn install > /dev/null 2>&1
+        check_status $? "java$java_version"
+        cd $rootdir
+    }
+
+    for ver in "${java_versions[@]}"; do
+        do_test_java $ver
+    done
 }

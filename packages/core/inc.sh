@@ -1,25 +1,37 @@
 #!/bin/bash
 
 function install_basic_tools {
-    sudo apt update
+    # network tools, git and some parsers
+    printf "${iwhite}##################################################\n"
+    printf "installing basic tools\n"
+    printf "##################################################\n${clear}"
+
+    # sudo apt update
     sudo apt install curl wget git-all net-tools iproute2 \
         netcat dnsutils iputils-ping iptables nmap tcpdump \
-        traceroute openssl neovim jq -y
+        traceroute openssl jq -y
+    if ! [ -x "$(command -v yq)" ]; then
+        snap install yq --channel=v3/stable
+    fi
 
-    snap install yq --channel=v3/stable
+    # neovim :)
+    if ! [ -x "$(command -v nvim)" ]; then
+        sudo apt install neovim -y
+    fi
 
     grep -q "alias vi=neovim" ~/.bashrc
     if [[ $? != 0 ]];
     then
-        echo 'alias vi=neovim' >> ~/.bashrc
+        printf 'alias vi=neovim' >> ~/.bashrc
     fi
+
 }
 
 function check_status {
     status=$1
     test_name=$2
-    if [ $status -ne 0 ]; then 
-        printf "${red}$test_name failed${clear}\n" 
+    if [ $status -ne 0 ]; then
+        printf "${red}$test_name failed${clear}\n"
     else 
         printf "${green}$test_name successful${clear}\n" 
     fi
@@ -44,7 +56,10 @@ function test_basic_tools {
     check_status $? "curl"
 
     # test wget
-    wget https://www.google.com/ -O test1 > /dev/null 2>&1
+    wget https://www.google.com/ -O /dev/null > /dev/null 2>&1
     check_status $? "wget"
-    rm -rf test1
+
+    test_command jq
+    test_command yq
+    test_command nvim
 }
