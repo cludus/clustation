@@ -1,0 +1,27 @@
+#/bin/bash
+
+function show_help {
+    echo "Usage: $0 {install|test}"
+}
+
+function install_all {
+    echo "installing..."
+}
+
+function test_all {
+    echo "testing..."
+}
+
+case $1 in
+  "install")
+    install_all
+    ;;
+
+  "test")
+    test_all
+    ;;
+
+  *)
+    show_help
+    ;;
+esac
