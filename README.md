@@ -11,8 +11,8 @@ To install all software with one script run the following
     sudo apt install curl wget git-all -y
     git clone https://github.com/cludus/workstation
     cd workstation
-    ./install-all.sh
+    ./workstation install
 
 to test run the following script
 
-    ./test-all.sh
+    ./workstation test
