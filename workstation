@@ -31,17 +31,21 @@ function install_all {
     # install_go
     # test_go
 
-    install_dotnet
-    test_dotnet
+    # install_dotnet
+    # test_dotnet
+
+    install_cpp
+    test_cpp
 }
 
 function test_all {
-    test_basic_tools
-    test_java
-    test_nodejs
-    test_python
-    test_go
-    test_dotnet
+    # test_basic_tools
+    # test_java
+    # test_nodejs
+    # test_python
+    # test_go
+    # test_dotnet
+    test_cpp
 }
 
 case $1 in
