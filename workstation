@@ -1,0 +1,104 @@
+#/bin/bash
+
+rootdir=$(readlink -f "$0")
+rootdir=$(dirname "$rootdir")
+cd $rootdir
+
+source $rootdir/config.sh
+# source all inc.sh files
+for file in $(find . -name '*inc.sh')
+do
+    source $file
+done
+
+function show_help {
+    echo "usage: $0 {install|test}"
+}
+
+function install_all {
+  install_basic_tools
+  test_basic_tools
+
+  install_java
+  test_java
+
+  install_nodejs
+  test_nodejs
+
+  install_python
+  test_python
+
+  install_go
+  test_go
+
+  install_dotnet
+  test_dotnet
+
+  install_cpp
+  test_cpp
+
+  install_libvirt
+
+  install_vagrant
+  test_vagrant
+
+  install_docker
+  test_docker
+
+  install_kubernetes
+  test_k3d
+  test_kind
+
+  install_lxc
+  test_lxc
+
+  install_terraform
+  test_terraform
+
+  install_ansible
+  test_ansible
+
+  install_chrome
+  install_editors
+  if [ "$jetbrains_community" = true ] ; then
+    install_jetbrain_comm
+  else
+    install_jetbrain_pro
+  fi
+
+  install_test_tools
+}
+
+function test_all {
+  test_basic_tools
+
+  test_java
+  test_nodejs
+  test_python
+  test_go
+  test_dotnet
+  test_cpp
+
+  test_vagrant
+  test_docker
+  test_k3d
+  test_kind
+  test_lxc
+  test_terraform
+  test_ansible
+
+}
+
+case $1 in
+  "install")
+    install_all
+    ;;
+
+  "test")
+    test_all
+    ;;
+
+  *)
+    show_help
+    ;;
+esac
