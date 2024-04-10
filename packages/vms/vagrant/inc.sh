@@ -16,7 +16,8 @@ function install_vagrant {
 }
 
 function test_vagrant {
-    cd "vagrant_tests" \
+    dir="$rootdir/packages/vms/vagrant/tests"
+    cd $dir \
         && vagrant up > /dev/null 2>&1 \
         && vagrant destroy -f > /dev/null 2>&1
     check_status $? "vagrant"

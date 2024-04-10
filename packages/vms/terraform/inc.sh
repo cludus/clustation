@@ -20,7 +20,8 @@ function install_terraform {
 }
 
 function test_terraform {
-    cd terraform_tests && \
+    dir="$rootdir/packages/vms/terraform/tests"
+    cd $dir && \
         terraform init -input=false > /dev/null 2>&1 \
         && terraform apply -input=false -auto-approve > /dev/null 2>&1 \
         && terraform destroy -input=false -auto-approve > /dev/null 2>&1

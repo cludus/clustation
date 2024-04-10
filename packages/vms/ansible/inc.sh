@@ -13,3 +13,11 @@ function install_ansible {
         source ~/.bashrc
     fi
 }
+
+function test_ansible {
+    dir="$rootdir/packages/vms/ansible/tests"
+    cd $dir \
+        && ansible-playbook -i inventory playbook.yml > /dev/null 2>&1
+    check_status $? "ansible"
+    cd $rootdir
+}
