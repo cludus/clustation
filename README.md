@@ -9,6 +9,9 @@ This setup is intended to be used in kubuntu (for now), usually in a bare-metal 
 To install all software with one script run the following
 
     sudo apt update && sudo apt install curl wget git-all -y
+    # ssh-keygen
+    # cat ~/.ssh/id_rsa.pub
+    # add public key to github
     git clone git@github.com:cludus/workstation.git
     cd workstation
     ./workstation install
