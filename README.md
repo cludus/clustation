@@ -11,7 +11,7 @@ To install all software with one script run the following
     sudo apt update && sudo apt install curl wget git-all -y
     # ssh-keygen
     # cat ~/.ssh/id_rsa.pub
-    # add public key to github in UserIcon -> Settings -> SH and GPG keys
+    # add public key to github in UserIcon -> Settings -> SSH and GPG keys
     git clone git@github.com:cludus/workstation.git
     cd workstation
     ./workstation install
