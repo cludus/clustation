@@ -4,7 +4,7 @@ Opinionated software responsible of preparing a workstation for optimal developm
 
 # Installation
 
-This setup is intended to be use in kubuntu (for now), usually in a bare-metal machine, but can be used with a vm as well.
+This setup is intended to be used in kubuntu (for now), usually in a bare-metal machine, but can be used with a vm as well.
 
 To install all software with one script run the following
 
