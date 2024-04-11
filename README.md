@@ -8,7 +8,7 @@ This setup is intended to be use in kubuntu (for now), usually in a bare-metal m
 
 To install all software with one script run the following
 
-    sudo apt install curl wget git-all -y
+    sudo apt update && sudo apt install curl wget git-all -y
     git clone https://github.com/cludus/workstation
     cd workstation
     ./workstation install
