@@ -60,12 +60,6 @@ function install_all {
 
   install_chrome
   install_editors
-  if [ "$jetbrains_community" = true ] ; then
-    install_jetbrain_comm
-  else
-    install_jetbrain_pro
-  fi
-
   install_test_tools
 }
 
