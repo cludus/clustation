@@ -7,6 +7,7 @@ cd $rootdir
 # source all inc.sh files
 for file in $(find . -name '*inc.sh')
 do
+    echo "including $file"
     source $file
 done
 
@@ -16,6 +17,7 @@ function show_help {
 
 function install_all {
   jq -r '.packages | keys[]' myworkstation.json | while read i; do
+      echo "installing and testing $i"
       eval "install_$i"
       eval "test_$i"
   done
