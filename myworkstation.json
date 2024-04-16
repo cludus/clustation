@@ -18,6 +18,14 @@
         "ansible": {},
         "chrome": {},
         "editors": {},
-        "test_tools": {}
+        "test_tools": {},
+        "gns3": {},
+        "security": {},
+        "video": {},
+        "edge": {},
+        "vivaldi": {},
+        "browsers": {},
+        "creativity": {},
+        "jetbrain_pro": {}
     }
 }
