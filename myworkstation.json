@@ -1,0 +1,23 @@
+{
+    "packages": {
+        "basic_tools": {},
+        "java": {},
+        "nodejs": {},
+        "python": {},
+        "go": {},
+        "dotnet": {},
+        "cpp": {},
+        "libvirt": {},
+        "vagrant": {},
+        "docker": {},
+        "kubernetes": {},
+        "k3d": {},
+        "kind": {},
+        "lxc": {},
+        "terraform": {},
+        "ansible": {},
+        "chrome": {},
+        "editors": {},
+        "test_tools": {}
+    }
+}
