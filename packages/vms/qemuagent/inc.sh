@@ -8,5 +8,5 @@ function install_qemuagent {
 }
 
 function test_qemuagent {
-
+    echo "no tests for qemuagent"
 }
