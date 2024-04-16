@@ -16,7 +16,7 @@ function show_help {
 }
 
 function install_all {
-  jq -r '.packages | keys[]' myworkstation.json | while read i; do
+  jq -r '.packages[]' myworkstation.json | while read i; do
       echo "installing and testing $i"
       eval "install_$i"
       eval "test_$i"
@@ -24,7 +24,7 @@ function install_all {
 }
 
 function test_all {
-  jq -r '.packages | keys[]' myworkstation.json | while read i; do
+  jq -r '.packages[]' myworkstation.json | while read i; do
       eval "test_$i"
   done
 }
