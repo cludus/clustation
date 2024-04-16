@@ -26,7 +26,7 @@ function test_editors {
 
 function install_gns3 {
     if ! [ -x "$(command -v gns3)" ]; then
-        sudo add-apt-repository ppa:gns3/ppa && \
+        sudo add-apt-repository ppa:gns3/ppa -y && \
             sudo apt update -y && \
             sudo apt install gns3-gui gns3-server -y
     fi
