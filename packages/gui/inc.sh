@@ -11,18 +11,29 @@ function install_chrome {
     fi
 }
 
+function test_chrome {
+    echo "no tests for chrome"
+}
 
 function install_editors {
     sudo snap install code --classic
     sudo snap install atom --classic
 }
 
+function test_editors {
+    echo "no tests for editors"
+}
+
 function install_gns3 {
     if ! [ -x "$(command -v gns3)" ]; then
-        sudo add-apt-repository ppa:gns3/ppa
-        sudo apt update
-        sudo apt install gns3-gui gns3-server -y
+        sudo add-apt-repository ppa:gns3/ppa && \
+            sudo apt update -y && \
+            sudo apt install gns3-gui gns3-server -y
     fi
+}
+
+function test_gns3 {
+    echo "no tests for gns3"
 }
 
 function install_security {
@@ -30,8 +41,16 @@ function install_security {
     sudo apt-get install gnupg kgpg -y
 }
 
+function test_security {
+    echo "no tests for security"
+}
+
 function install_video {
     sudo apt install ffmpeg vlc -y
+}
+
+function test_video {
+    echo "no tests for video"
 }
 
 function install_edge {
@@ -44,6 +63,10 @@ function install_edge {
 
         sudo apt install microsoft-edge-stable -y
     fi
+}
+
+function test_edge {
+    echo "no tests for edge"
 }
 
 function install_vivaldi {
@@ -59,12 +82,20 @@ function install_vivaldi {
     sudo apt install vivaldi-stable -y
 }
 
+function test_vivaldi {
+    echo "no tests for vivaldi"
+}
+
 function install_browsers() {
     sudo snap install thunderbird
     sudo snap install chromium
     sudo snap install chromium-ffmpeg
     sudo snap install opera
     sudo snap install brave
+}
+
+function test_browsers {
+    echo "no tests for browsers"
 }
 
 function install_creativity {
@@ -86,6 +117,10 @@ function install_creativity {
     sudo snap install lunacy
 }
 
+function test_creativity {
+    echo "no tests for creativity"
+}
+
 function install_jetbrain_pro {
     sudo snap install intellij-idea-ultimate --classic
     sudo snap install rider --classic
@@ -95,4 +130,8 @@ function install_jetbrain_pro {
     sudo snap install datagrip --classic
     sudo snap install clion --classic
     sudo snap install rubymine --classic
+}
+
+function test_jetbrain_pro {
+    echo "no tests for jetbrain_pro"
 }
