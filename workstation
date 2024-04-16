@@ -17,7 +17,9 @@ function show_help {
 
 function install_all {
   jq -r '.packages[]' myworkstation.json | while read i; do
-      echo "installing and testing $i"
+      printf "${iwhite}##################################################\n"
+      printf "installing and testing $i\n"
+      printf "##################################################\n${clear}"
       eval "install_$i"
       eval "test_$i"
   done

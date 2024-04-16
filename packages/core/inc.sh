@@ -1,11 +1,6 @@
 #!/bin/bash
 
 function install_basic_tools {
-    # network tools, git and some parsers
-    printf "${iwhite}##################################################\n"
-    printf "installing basic tools\n"
-    printf "##################################################\n${clear}"
-
     # sudo apt update
     sudo apt install curl wget git-all iproute2 \
         netcat dnsutils iputils-ping iptables nmap tcpdump \
