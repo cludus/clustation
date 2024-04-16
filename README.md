@@ -9,9 +9,8 @@ This setup is intended to be used in kubuntu (for now), usually in a bare-metal 
 To install all software with one script run the following
 
     sudo apt update && sudo apt install git-all -y
-    git clone https://github.com/cludus/workstation
-    cd workstation
-    ./workstation install
+    git clone https://github.com/cludus/workstation ~/.workstation
+    ~/.workstation/workstation install
 
 to test run the following script
 

@@ -4,7 +4,6 @@ rootdir=$(readlink -f "$0")
 rootdir=$(dirname "$rootdir")
 cd $rootdir
 
-source $rootdir/config.sh
 # source all inc.sh files
 for file in $(find . -name '*inc.sh')
 do
