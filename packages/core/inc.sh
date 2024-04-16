@@ -7,7 +7,7 @@ function install_basic_tools {
     printf "##################################################\n${clear}"
 
     # sudo apt update
-    sudo apt install curl wget git-all net-tools iproute2 \
+    sudo apt install curl wget git-all iproute2 \
         netcat dnsutils iputils-ping iptables nmap tcpdump \
         traceroute openssl jq -y
     if ! [ -x "$(command -v yq)" ]; then
