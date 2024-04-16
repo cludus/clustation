@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function install_lxc {
-    sudo apt install lxc
+    sudo apt install lxc -y
 }
 
 function test_lxc {
