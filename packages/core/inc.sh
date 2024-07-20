@@ -3,7 +3,7 @@
 function install_basic_tools {
     # sudo apt update
     sudo apt install curl wget git-all iproute2 \
-        netcat dnsutils iputils-ping iptables nmap tcpdump \
+        dnsutils iputils-ping iptables nmap tcpdump \
         traceroute openssl jq -y
     if ! [ -x "$(command -v yq)" ]; then
         snap install yq --channel=v3/stable
@@ -14,10 +14,10 @@ function install_basic_tools {
         sudo apt install neovim -y
     fi
 
-    grep -q "alias vi=neovim" ~/.bashrc
+    grep -q "alias vi=nvim" ~/.bashrc
     if [[ $? != 0 ]];
     then
-        printf 'alias vi=neovim' >> ~/.bashrc
+        printf 'alias vi=nvim' >> ~/.bashrc
     fi
 
 }
