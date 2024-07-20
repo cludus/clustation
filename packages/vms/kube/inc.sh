@@ -47,7 +47,7 @@ function test_kind {
     check_status $? "kind"
 }
 
-function install_kubernetes {
+function test_kubernetes {
     test_k3d
     test_kind
 }

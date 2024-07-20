@@ -13,7 +13,6 @@
         "kubernetes",
         "k3d",
         "kind",
-        "lxc",
         "terraform",
         "ansible",
         "chrome",
