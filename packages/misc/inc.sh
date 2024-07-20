@@ -13,3 +13,7 @@ function install_test_tools {
         sudo apt-get update && sudo apt-get install k6 -y
     fi
 }
+
+function test_test_tools {
+    echo "no tests for test_tools"
+}

@@ -35,3 +35,7 @@ function install_libvirt {
     install_virtualization
     download_imgs
 }
+
+function test_libvirt {
+    echo "no tests for libvirt"
+}
