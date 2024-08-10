@@ -6,6 +6,7 @@ function install_libvirt {
         sudo apt install cpu-checker -y
         sudo apt install qemu-kvm libvirt-daemon-system libguestfs-tools virt-manager virt-top -y
         sudo adduser $USER libvirt
+        sudo usermod -aG kvm $USER
 
         grep -q '#security_driver = "selinux"' ~/.bashrc
         if [[ $? != 0 ]];
