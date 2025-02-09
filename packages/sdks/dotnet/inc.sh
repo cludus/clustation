@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function install_dotnet {
+    sudo add-apt-repository ppa:dotnet/backports
+    sudo apt-get update
     for ver in "${dotnet_versions[@]}"; do
         sudo apt-get install -y dotnet-sdk-$ver
     done
