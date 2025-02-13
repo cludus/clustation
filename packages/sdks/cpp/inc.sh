@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function install_cpp {
     function do_install_cpp {
         sudo apt install -y build-essential
@@ -28,8 +27,17 @@ function install_cpp {
         sudo apt-get install libao-dev libmpg123-dev -y
     }
 
+    function do_install_cuda {
+        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/cross-linux-sbsa/cuda-keyring_1.1-1_all.deb
+        sudo dpkg -i cuda-keyring_1.1-1_all.deb
+        rm -rf cuda-keyring_1.1-1_all.deb
+        sudo apt-get update
+        sudo apt-get -y install nvidia-cuda-toolkit
+    }
+
     do_install_cpp
     do_install_opengl
+    do_install_cuda
 }
 
 function test_cpp {
@@ -45,5 +53,23 @@ function test_cpp {
         cd $rootdir
     }
 
+    function do_test_opengl {
+        dir="$rootdir/packages/sdks/cpp/tests"
+        # cd "$dir/opengl"
+        # TODO            
+    }
+
+    function do_test_cuda {
+        dir="$rootdir/packages/sdks/cpp/tests"
+        cd "$dir/cuda" \
+            && mkdir -p build \
+            && cd build \
+            && nvcc ../cuda_test.cu 2>&1 \
+            && ./a.out > /dev/null 2>&1
+        check_status $? "cuda"
+    }
+
     do_test_gcc
+    do_test_opengl
+    do_test_cuda
 }
